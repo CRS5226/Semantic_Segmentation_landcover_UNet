@@ -1,0 +1,338 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\IEEEpubid{\makebox[\columnwidth]{979-8-3503-7952-5/24/\$31.00~\copyright2024 IEEE \hfill} \hspace{\columnsep}\makebox[\columnwidth]{ }}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Towards U-Net based Semantic Segmentation for Satellite images\\}
+
+% \author{\IEEEauthorblockN{1\textsuperscript{st} Dr. Deepak kumar Dewangan}
+\author{\IEEEauthorblockN{Chitraksh Singh}
+\IEEEauthorblockA{\textit{ABV-IIITM} \\
+% \textit{name of organization (of Aff.)}\\
+Gwalior, Madhya Pradesh, INDIA \\
+mtics\textunderscore202306@iiitm.ac.in}
+\and
+\IEEEauthorblockN{Deepak Kumar Dewangan}
+\IEEEauthorblockA{\textit{ABV-IIITM} \\
+% \textit{name of organization (of Aff.)}\\
+Gwalior, Madhya Pradesh, INDIA \\
+deepakd@iiitm.ac.in}
+}
+
+\maketitle
+
+\begin{abstract}
+Semantic segmentation in satellite imagery is a critical process that involves categorizing each pixel into predefined classes such as buildings and roads. The challenge lies in developing accurate automated methods capable of efficiently classifying and mapping diverse types of land cover. Traditional approaches work very well on sample data. However, with a change in the data set, performance was found to be limited. In this direction a semantic segmentation based deep learning architecture, U-Net with ResNet having versions 50, 101, and 152 has been considered which helps to find the significant feature. For this research, Landcover.ai and Dubai landcover dataset have been used, which contains high-resolution images annotated with classes buildings, roads, land, water, and forests. Adam optimizer and Jaccard loss function were considered to train our model with data augmentation. Our experiments demonstrated that this approach achieves a mean IoU score of 80.20\%  and 82.95\% in the test data set.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Semantic segmentation, data augmentation, ResNet, Landcover.ai dataset, Dubai landcover,  Unet, IoU score.
+\end{IEEEkeywords}
+
+\section{Introduction}
+The mapping and monitoring of land cover are critical components of geographic information systems (GIS) and environmental management\cite{aiedge}. Accurate land cover maps are essential for a variety of applications, such as agriculture management, urban planning, forestry, and disaster response\cite{sirfuzzy}. Semantic segmentation significantly improves border security by detecting unauthorized activities, monitoring infrastructure, and identifying smuggling routes. In disaster management, it helps assess damage, flood mapping, fire monitoring, and early warning systems \cite{torchgeo}. These applications improve decision making, optimize resource allocation, and enable rapid, cost-effective responses to security and disaster scenarios. Traditionally, these maps are generated through manual interpretation of aerial or satellite imagery, which is slow and resource-exhaustive. Recent advances in deep learning and computer vision, particularly in semantic segmentation, have opened new avenues for automating this process with high precision and efficiency\cite{fcn}.
+
+Through semantic segmentation, one assigns every pixel in an image to a designated predefined category \cite{uav}. Since then, considerable advances have been made in the field due to the development of convolutional neural networks (CNNs) \cite{cnn}. The U-Net architecture, works best for biomedical image segmentation and has proven highly effective in various segmentation tasks due to its symmetric encoder-decoder structure that captures both contextual and spatial information \cite{nanosatellite}. Incorporating powerful backbones, trained in large datasets, further enhances segmentation performance by leveraging rich feature representations \cite{sirestimation}.
+
+This research exploits the LandCover.ai dataset \cite{landcoverai}, which provides a comprehensive collection of high-resolution aerial imagery that covers rural areas in Poland cover 216.27 square kilometers. The dataset is meticulously annotated with four key land cover classes buildings, roads, water, and woodlands. Additionally, the Dubai dataset \cite{dubai}, which includes an vegetation feature instead of woodlands.  This dataset serves as an excellent dataset to evaluating the effectiveness of advanced deep learning models.
+
+In the proposed approach an U-Net architecture with ResNet-50, 101, 152 backbones \cite{multiattent}, trained on ImageNet\cite{modifiedunet}, to perform semantic segmentation on the LandCover.ai dataset has been consider to identify the significant feature in the dataset. Adam optimizer and a categorical focal Jaccard as loss function is used, with the objective to maximize the Intersection over Union (IoU) score.
+
+Our results indicate that the proposed approach achieves a mean IoU score of 80.20\%  and 82.95\% on the test set, demonstrating its potential for practical deployment in land cover mapping.
+
+\section{Related works}
+Recent progress in semantic segmentation for satellite imagery has been largely fueled by the adoption of deep learning methods. A pivotal advancement in the field was the introduction of the Fully Convolutional Network (FCN) by Long et al. in 2015 \cite{fcn}, which replaced fully connected layers with convolutional ones, enabling end-to-end pixel-wise classification. This innovation laid the groundwork for the development of more sophisticated segmentation models, including those applied to satellite image analysis.
+
+Ronneberger et al. (2015) proposed the U-Net architecture \cite{Unet}, initially developed for biomedical image segmentation, and it has been widely applied to a range of segmentation tasks, including satellite imagery. Its design features a symmetric encoder-decoder structure with skip connections, enabling effective capture of contextual and spatial information, which is particularly advantageous for high-resolution satellite data. However, the original U-Net architecture has limitations in utilizing multi scale feature maps, which are crucial for achieving detailed segmentation outputs, especially in complex landscapes.
+
+Researchers have improved U-Net's feature extraction capabilities by integrating pretrained backbone networks such as ResNet. Introduced by He et al. (2016) \cite{cvresnet}, ResNet excels in various computer vision tasks due to its deep residual learning framework. By incorporating ResNet as the backbone, U-Net allows us to obtain feature representations from large-scale datasets such as ImageNet, leading to better segmentation accuracy in satellite images. For example, Audebert et al. (2018) demonstrated notable performance improvements by combining ResNet with U-Net for urban scene segmentation.
+
+The LandCover.ai dataset \cite{landcoverai}, which is utilized in this research, has primarily been explored using the DeepLab architecture. However, its performance with U-Net and other architectures has not been extensively investigated. This study proposes that employing U-Net with ResNet as the backbone can be highly effective for segmentation tasks on this dataset, potentially offering enhancements over existing approaches.
+
+
+\section{Material and Method}
+This section details the methodology used for semantic segmentation of the LandCover.ai dataset, employing a U-Net architecture. The methodology consist data preparation, model architecture, data augmentation, and training procedures. 
+
+\subsection{Dataset}
+
+The LandCover.ai dataset includes high-resolution aerial imagery as in Fig.~\ref{fig:1} from rural areas in Poland, annotated with four land cover classes buildings, woodlands, water, and roads and there landcover area. Dubai landcover contains building, land, road, vegetation, water, unlabeled as in Fig.~\ref{fig:4}. The dataset is split into training, validation, and test sets. Before being input into the model, each image and its corresponding mask undergo preprocessing. The masks, initially in grayscale with integer values representing distinct classes, are converted into one-hot encoded format to enable training with categorical cross-entropy loss, while also maintaining a detailed count of class pixels. Various augmentation techniques are applied to increase the diversity of the training data and enhance the model's robustness, including random horizontal flips of images and saturation adjustments.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{0_MTP_PAPER/M-34-51-C-d-4-1-5.png}
+    
+    \caption{Sample image from landcover.ai dataset}
+    \label{fig:1}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{results/dubaiimage.png}
+    \caption{Sample image from dubai landcover dataset}
+    \label{fig:4}
+\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=1\linewidth]{0_MTP_PAPER/classcntAll.png}
+%     \caption{Class distribution of landcover.ai dataset}
+%     \label{fig:4}
+% \end{figure}
+
+\subsection{Model Architecture}
+
+The chosen architecture is a U-Net with a ResNet versions \cite{resnet} as backbones in Fig.~\ref{fig:2}. The U-Net model is particularly well-suited for segmentation tasks due to its symmetric encoder-decoder structure \cite{Unet}, which captures contextual information and preserves spatial details. The encoder section of the U-Net consists of a pre-trained ResNet \cite{unetresnet}, which has been trained on the ImageNet dataset \cite{transferlearning}. This backbone extracts high-level features from the input images through a series of convolutional and downsampling layers. ResNet-50 balances the depth and performance, ResNet-101 variant improves extraction of complex features and ResNet-152 variant capture very fine-grained details and complex feature. The ResNet consists of an initial convolutional layer followed by multiple residual blocks consisting Relu as an activation function \cite{resnetbackbone}, which help in learning deep representations while avoiding the vanishing gradient problem. Max pooling is applied after the ReLU activation. The decoder section of the U-Net is composed of upsampling layers that gradually restore the spatial resolution of the feature maps \cite{encoderdecoder}. After each upsampling step, we concatenate the corresponding encoder feature maps with the upsampled feature maps via skip connections to maintain fine-grained details. The final layer of the decoder performs a convolution to map the feature maps to the desired number of output classes, using a softmax activation function for pixel-wise classification. The model is optimized with the Adam optimizer, which adjusts the learning rate dynamically during training to enhance convergence. The loss function employed is a combination of categorical focal loss and Jaccard loss, which helps in handling class imbalance and improving segmentation accuracy. Jaccard Loss quantifies the overlap between predicted and true masks by directly optimizing the Intersection over Union (IoU) metric. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{0_MTP_PAPER/Unet.png}
+    \caption{Structure of U-Net architecture.}
+    \label{fig:2}
+\end{figure}
+
+
+
+\section{Experimental Setup}
+
+\subsection{Dataset preparation}
+The LandCover.ai dataset contains high resolution images of buildings, roads, water, and woodlands using aerial imagery. It includes land cover data from Poland and features three spectral bands (RGB). The dataset includes 33 orthophotos and 8 orthophotos , covering a total area of 216.27 km², were as dubai dataset contains 8 tiles each containing 9 images with there masks. The dataset categorizes land cover into four classes, labeled by pixel values: buildings (1), woodlands (2), water (3), and roads (4). The area distribution includes 1.85 km² of buildings,  3.5 km² of roads, 13.15 km² of water, and 72.02 km² of woodlands and in dubai dataset instead of  woodlands, land is labelled as (2). Firstly the dimensions of  images are slice into factor of 512 pixels so that it can be divided into 512*512 pixels precisely as in Fig.~\ref{fig:3} . Secondly data have less than 5\% of information were not useful as they have no background information has been removed.
+
+ 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\linewidth]{0_MTP_PAPER/imagemask.png}
+    \caption{Sample image and mask from training data}
+    \label{fig:3}
+\end{figure}
+
+\subsection{Implementation details}
+We utilized the PyTorch library to perform the experiment on an NVIDIA Tesla P100 GPU. The Adam optimizer was employed with a weight decay of 0.01 and a batch size of 8, while the stride value was set to 2. The number of steps per epoch was calculated by dividing the total number of training images by the batch size. Similarly, the validation steps per epoch is also calculated and categorical focal jaccard as loss function \cite{hyperparaunet}. The training uses data augmentations, given in Table \ref{tab:2} and results given in Fig.~\ref{fig:9}. Unet architecture contains backbones as ResNet-50 , ResNet-101, ResNet-152 and ImageNet is use as encoder weights for all, having 32521685, 51513813, 67157461 trainable parameter respectively, for all version base learning rate is set at 5*10\textsuperscript{-5} and trained for the 50 epochs  with L2 regularization with a penalty value of 10\textsuperscript{-6}. The input layer specifies the height, width, and channels of an image, followed by batch normalization and zero padding, and ReLu \cite{relu} as an activation function Eq.\ref{eq:6} defined as the non-negative portion of its argument, where x represents the input to a neuron.
+\begin{equation}
+f(x)=\max (0, x)= \begin{cases}x & \text { if } x>0, \\ 0 & \text { otherwise }\end{cases}\label{eq:6}
+\end{equation}
+The final layer of the decoder employs the softmax activation function \cite{softmax}, as described in Eq.~\ref{eq:7}, for multiclass classification. Specifically, the standard (unit) softmax function \(\sigma: \mathbb{R}^K \rightarrow (0,1)^K\), where \(K \geq 1\), takes a vector \(\mathbf{z}=\left(z_1, \ldots, z_K\right) \in \mathbb{R}^K\) and calculates each component of the resulting vector \(\sigma(\mathbf{z}) \in (0,1)^K\) with
+\begin{equation}
+    \sigma(\mathbf{z})_i=\frac{e^{z_i}}{\sum_{j=1}^K e^{z_j}}\label{eq:7}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{results/augmentations2.png}
+    \caption{Data augmentations results.}
+    \label{fig:9}
+\end{figure}
+
+\begin{table}[h]
+    \raggedright
+    \caption{Data Augmentation Information Table}
+    \begin{tabular}{p{2cm} p{3cm} p{3cm}} % Adjust column widths to control wrapping
+        \textbf{Data Augmentation} & \textbf{Parameter(s)} & \textbf{Effect on Image} \\
+        \hline
+        Gaussian Blur & \raggedright blur\_limit=(3, 7), p=1 & Smooths the image and reduces sharpness. \\
+        Elastic Transform & \raggedright alpha=1, sigma=50, alpha\_affine=None, p=1 & Simulates real-world deformations. \\
+        Grid Distortion & \raggedright p=1 & Alters the grid-like structure of pixels. \\
+        Optical Distortion & \raggedright distort\_limit=0.5, shift\_limit=0.5, p=1 & Adds lens or optical distortion effects. \\
+        ShiftScaleRotate & \raggedright shift\_limit=0.0625, scale\_limit=0.1, rotate\_limit=45, p=1 & Ensures spatial invariance. \\
+        Channel Shuffle & \raggedright p=1 & Simulates varying sensor sensitivities. \\
+        CLAHE & \raggedright p=1 & Improves local contrast and detail detection. \\
+        ISONoise & \raggedright p=1 & Simulates sensor noise in images. \\
+        Coarse Dropout & \raggedright max\_holes=8, max\_height=16, max\_width=16, p=1 & Simulates missing parts or occlusions. \\
+        Motion Blur & \raggedright blur\_limit=7, p=1 & Simulates motion blur effects. \\
+        Random Fog & \raggedright fog\_coef\_lower=0.1, fog\_coef\_upper=0.3, alpha\_coef=0.08, p=1 & Simulates foggy weather conditions. \\
+        Random Rain & \raggedright slant\_lower=-10, slant\_upper=10, drop\_length=20, drop\_color=(200, 200, 200), p=1 & Adds rain streaks and effects. \\
+        Random Snow & \raggedright snow\_point\_lower=0.1, snow\_point\_upper=0.3, p=1 & Adds snow to simulate winter conditions. \\
+        Solarize & \raggedright p=1 & Alters bright regions, adding artistic distortions. \\
+        Equalize & \raggedright p=1 & Redistributes pixel intensity. \\
+        Invert Image & \raggedright p=1 & Inverts pixel intensity, dark becomes light, and vice versa. \\
+        Posterize & \raggedright num\_bits=4, p=1 & Lowers image quality by reducing pixel color depth. \\
+        Random Sun Flare & \raggedright flare\_roi=(0.0, 0.0, 1.0, 0.5), angle\_lower=0.0, p=1 & Simulates sun flare and lighting anomalies. \\
+        Random Shadow & \raggedright shadow\_roi=(0.0, 0.5, 1.0, 1.0), p=1 & Adds random shadows to the image. \\
+        Random Brightness \& Contrast & \raggedright brightness\_limit=0.2, contrast\_limit=0.2, p=1 & Introduces lighting and exposure variations. \\
+    \end{tabular}
+    \label{tab:2}
+\end{table}
+\subsection{Results}
+To assess the model's performance, we will calculate the Jaccard index (IoU) \cite{iou} on the validation dataset. This metric assesses the ratio of the overlapping area between the predicted and ground truth masks to the total area covered by both masks, as shown in Eq.\ref{eq:1}. Specifically, it is calculated by dividing the number of true positive values by the total of true positives, false positives, and false negatives. The evaluation will employ a pixel-wise Jaccard index, as described.
+\begin{equation}
+I o U_j=\frac{\sum_{i=1}^n T P_{i j}}{\sum_{i=1}^n T P_{i j}+\sum_{i=1}^n F P_{i j}+\sum_{i=1}^n F N_{i j}}\label{eq:1}
+\end{equation}
+
+where \(\operatorname{IoU}_j\) represents the IoU score for each pixel associated with class \(j\) across a total of \(n\) images. In this context, \(\operatorname{TP}_{ij}\), \(\operatorname{FP}_{ij}\), and \(\operatorname{FN}_{ij}\) indicate the true positive, false positive, and false negative pixels of class \(j\) in each image \(i\), respectively. The final score is the average IoU across all classes, as shown in Eq.~\ref{eq:2}, where \(k\) denotes the total number of classes.
+
+\begin{equation}
+m I o U=\frac{1}{k} \sum_{j=1}^k I o U{ }_j\label{eq:2}
+\end{equation}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\linewidth]{results//resnetall/resnet50_rel.png}
+    \caption{ Result of  ResNet-50}
+    \label{fig:7}
+    
+    \vspace{1em} % Adds vertical space between images
+    
+    \includegraphics[width=1\linewidth]{results//resnetall/resnet101_rel.png}
+    \caption{Result of ResNet-101}
+    \label{fig:16}
+    
+    \vspace{1em} % Adds vertical space between images
+    
+    \includegraphics[width=1\linewidth]{results//resnetall/resnet152_rel.png}
+    \caption{Result of ResNet-152}
+    \label{fig:17}
+\end{figure}
+
+\begin{table*}
+\centering
+\caption{Quantitative Comparison of Classes with performance matrix of landcover.ai dataset}
+\begin{tabular}{lccclccclccc} 
+ & \multicolumn{3}{c}{ResNet-50} && \multicolumn{3}{c}{ResNet-101} & & \multicolumn{3}{c}{ResNet-152}\\ 
+& precision & recall & f1-score   && precision & recall &f1-score  
+ & & precision & recall &f1-score   
+\\ 
+background & 0.7694& 0.7452& 0.7549&& 0.8021& 0.7463&0.7732& & 0.7470& 0.7749&0.7607\\ 
+building & 0.9036    & 0.9140    & 0.9088&& 0.9231& 0.8935&0.9081& & 0.9101& 0.9080&0.9090\\ 
+woodland & 0.9076& 0.7990& 0.8499&& 0.8123& 0.9150&0.8606& & 0.8756& 0.8445&0.8597\\ 
+water & 0.9505& 0.9408& 0.9457&& 0.9417& 0.9539&0.9477& & 0.9425& 0.9491&0.9458\\ 
+road & 0.9320& 0.9651& 0.9482&& 0.8999& 0.9616&0.9297& & 0.9725& 0.9359&0.9538\\ 
+\end{tabular}
+\label{tab:1}
+\end{table*}
+
+
+\begin{figure*}[ht]
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet50_iou.png}
+         \centering  (a) Graph of Resnet-50 IoU score
+        \label{fig:20}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet101_iou.png}
+         \centering  (b) Graph of Resnet-101 IoU score
+        \label{fig:10}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet152_iou.png}
+         \centering  (c) Graph of Resnet-152 IoU score
+        \label{fig:11}
+    \end{minipage}
+
+    \vspace{0.5cm}
+
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet50_loss.png}
+         \centering  (d) Graph of Resnet-50 loss
+        \label{fig:12}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet101_loss.png}
+         \centering  (e) Graph of Resnet-101 loss
+        \label{fig:13}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{results/resnetall/resnet152_loss.png}
+        
+        \centering  (f) Graph of Resnet-152 loss
+        \label{fig:14}
+    \end{minipage}
+
+    \vspace{0.5cm}
+
+    \caption{Overall Result of ResNet version on landcover.ai dataset}
+    \label{fig:15}
+\end{figure*}
+
+The results obtained on the test set using IoU and loss metrics shown in Fig.~\ref{fig:15} . In figure Fig.~\ref{fig:17} shows close-ups of images, their corresponding labels, and the resulting accurate segmentations. Roads and buildings pose the most significant challenges for semantic segmentation due to their narrow (roads) or small (buildings) structures. Consequently, due to fewer inner pixels like imprecise edges of classes makes accurate classification more difficult. U-Net with ResNet model achieves mIoU score on the entire test set shown in Table \ref{tab:1}. Using a smaller output stride results in improved performance, and further applying augmentation techniques enhances the metrics, reaching a final mIoU score of 80.20\% and accuracy Eq.\ref{eq:8} of 92.73\% shown in Fig.~\ref{fig:25} by ResNet-152. Performance matrix having precision of 88.954\%  Eq.\ref{eq:3}, recall of 88.248\%  Eq.\ref{eq:4} and f1-score of 88.580\%  Eq.\ref{eq:5}. ResNet-50 and ResNet-101 were performing below from ResNet-152 with mIoU score of 79.53\% and 79.73\% respectively, prediction is shown in  Fig.~\ref{fig:16} and  Fig.~\ref{fig:17} for landcover.ai dataset and for dubai dataset mIoU score is 82.95\% and accuracy is 84.95\%.
+
+\begin{equation}
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}\label{eq:8}
+\end{equation}
+\begin{equation}
+\text{Precision} = \frac{TP}{TP + FP} \label{eq:3}
+\end{equation}
+\begin{equation}
+\text{Recall} = \frac{TP}{TP + FN} \label{eq:4}
+\end{equation}
+\begin{equation}
+F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} \label{eq:5}
+\end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{results//resnet152/resnet152_confusion.png}
+    \caption{Resnet 152 confusion matrix of landcover.ai dataset}
+    \label{fig:25}
+\end{figure}
+
+
+
+\section{Conclusion}
+This research explores the use of a U-Net model with a ResNet variants backbones for land classification using the LandCover.ai dataset. The aim is to evaluate its effectiveness in potential applications on edge devices in space. The model showed promising results, generating usable outputs. However, some limitations were observed, including inaccuracies in pixel classification for specific classes (e.g., misjudging the size of a road area) and errors in assigning the correct terrain type to certain pixel groups.
+
+For future research, exploring alternative segmentation models could enhance the accuracy of the proposed system. Additionally, making the model more lightweight and efficient for deployment on edge devices in orbit is crucial. These devices have limited processing power and memory, so it's essential to explore techniques for compressing models to run effectively on smaller processors.
+
+Utilizing diverse datasets that simulate the image capturing capabilities of satellites would be advantageous for improving the model. Addressing more complex challengeslike lower resolutions and cloud coverage would enhance the system's robustness in managing diverse inputs. Additionally, expanding the model's classification system to cover a broader range of terrain types and diverse locations is recommended for enhancing its overall performance and applicability.
+
+Finally, using the model from this study could facilitate the development of a comprehensive solution that processes input images and dynamically manages storage based on the relevance of the currently stored images. Additionally, incorporating evaluation metrics such as identifying the presence of interesting subjects, evaluating image quality through super-resolution, and ensuring a high diversity of classes within an image could further enhance classification performance.
+
+\bibliographystyle{plain}
+\bibliography{bibfile}
+
+
+
+
+% \begin{table}[h]
+%     \centering
+%     \caption{Layer-wise Details of U-Net with ResNet-152 Encoder}
+%     \begin{tabular}{|p{4cm}|p{6cm}|p{4cm}|}
+%         \hline
+%         \textbf{Layer}           & \textbf{Type}                           & \textbf{Output Shape (Example)}  \\
+%         \hline
+%         Input                    & -                                       & (Batch, 3, 512, 512)             \\
+%         \hline
+%         Encoder Block 1          & ResNet-152 convolutional layers (Pretrained) & (Batch, 64, 256, 256)            \\
+%         \hline
+%         Encoder Block 2          & ResNet-152 deeper layers, residual blocks  & (Batch, 256, 128, 128)           \\
+%         \hline
+%         Encoder Block 3          & ResNet-152 residual blocks                & (Batch, 512, 64, 64)             \\
+%         \hline
+%         Encoder Block 4          & ResNet-152 deepest residual layers        & (Batch, 1024, 32, 32)            \\
+%         \hline
+%         Bottleneck               & Convolution and ReLU activations          & (Batch, 2048, 16, 16)            \\
+%         \hline
+%         Decoder Block 1          & Upsample + Convolution + Skip connection from Encoder Block 4 & (Batch, 1024, 32, 32) \\
+%         \hline
+%         Decoder Block 2          & Upsample + Convolution + Skip connection from Encoder Block 3 & (Batch, 512, 64, 64) \\
+%         \hline
+%         Decoder Block 3          & Upsample + Convolution + Skip connection from Encoder Block 2 & (Batch, 256, 128, 128) \\
+%         \hline
+%         Decoder Block 4          & Upsample + Convolution + Skip connection from Encoder Block 1 & (Batch, 64, 256, 256) \\
+%         \hline
+%         Output Layer             & 1x1 Convolution + Softmax activation      & (Batch, 5, 512, 512)             \\
+%         \hline
+%     \end{tabular}
+%     \label{tab:layerwise_table}
+% \end{table}
+
+
+
+
+
+\IEEEpubidadjcol % This command ensures the copyright notice is properly positioned.
+
+\end{document}
