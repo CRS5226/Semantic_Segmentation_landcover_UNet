@@ -1,0 +1,362 @@
+@misc{landcoverai,
+      title={LandCover.ai: Dataset for Automatic Mapping of Buildings, Woodlands, Water and Roads from Aerial Imagery}, 
+      author={Adrian Boguszewski and Dominik Batorski and Natalia Ziemba-Jankowska and Tomasz Dziedzic and Anna Zambrzycka},
+      year={2022},
+      eprint={2005.02264},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2005.02264}, 
+}
+
+@misc{code,
+      title={Deep Learning on LandCover.ai dataset}, 
+      author={Christos Nikou},
+      year={2022},
+      url={https://www.kaggle.com/code/chrisnick92/deeplearning-on-landcoverai}, 
+}
+
+
+@misc{Unet,
+      title={U-Net: Convolutional Networks for Biomedical Image Segmentation}, 
+      author={Olaf Ronneberger and Philipp Fischer and Thomas Brox},
+      year={2015},
+      eprint={1505.04597},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1505.04597}, 
+}
+
+@inproceedings{nanosatellite,
+author = {Deticio, Ramiel and Bandala, Argel and Jose, John Anthony and Concepcion II, Ronnie and Purio, Mark Angelo and Sybingco, Edwin and Tan Ai, Richard},
+year = {2023},
+month = {10},
+pages = {71-75},
+title = {Application of a U-Net Segmentation Model in Land Cover Classification for Use in Automated Data Prefiltering Onboard Nanosatellites},
+booktitle = {Application of a U-Net Segmentation Model in Land Cover Classification for Use in Automated Data Prefiltering Onboard Nanosatellites},
+doi = {10.1109/TENCON58879.2023.10322528}
+}
+
+@article{glt,
+author = {Kumar, Satyawant and Kumar, Abhishek and Lee, Dong-Gyu},
+year = {2023},
+month = {01},
+pages = {1-1},
+title = {RSSGLT: Remote Sensing Image Segmentation Network based on Global-Local Transformer},
+volume = {PP},
+journal = {IEEE Geoscience and Remote Sensing Letters},
+doi = {10.1109/LGRS.2023.3337879}
+}
+
+@misc{fcn,
+      title={Fully Convolutional Networks for Semantic Segmentation}, 
+      author={Jonathan Long and Evan Shelhamer and Trevor Darrell},
+      year={2015},
+      eprint={1411.4038},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1411.4038}, 
+}
+
+@article{resnet,
+author = {Liang, Jiazhi},
+year = {2020},
+month = {09},
+pages = {012110},
+title = {Image classification based on RESNET},
+volume = {1634},
+journal = {Journal of Physics: Conference Series},
+doi = {10.1088/1742-6596/1634/1/012110}
+}
+
+@INPROCEEDINGS{cvresnet,
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+  title={Deep Residual Learning for Image Recognition}, 
+  year={2016},
+  volume={},
+  number={},
+  pages={770-778},
+  keywords={Training;Degradation;Complexity theory;Image recognition;Neural networks;Visualization;Image segmentation},
+  doi={10.1109/CVPR.2016.90}}
+
+
+@article{unetresnet,
+author = {Prakash, Nikhil and Manconi, Andrea and Loew, Simon},
+year = {2020},
+month = {01},
+pages = {346},
+title = {Mapping Landslides on EO Data: Performance of Deep Learning Models vs. Traditional Machine Learning Models},
+volume = {12},
+journal = {Remote Sensing},
+doi = {10.3390/rs12030346}
+}
+
+@misc{relu,
+      title={Deep Learning using Rectified Linear Units (ReLU)}, 
+      author={Abien Fred Agarap},
+      year={2019},
+      eprint={1803.08375},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/1803.08375}, 
+}
+
+@INPROCEEDINGS{softmax,
+  author={S, Raghuram and Bharadwaj, Anirudh S and S K, Deepika and Khadabadi, Mridula S and Jayaprakash, Aditya},
+  booktitle={2022 4th International Conference on Circuits, Control, Communication and Computing (I4C)}, 
+  title={Digital Implementation of the Softmax Activation Function and the Inverse Softmax Function}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={64-67},
+  keywords={Deep learning;Power demand;Neural networks;Hardware;Artificial intelligence;Deep Neural Networks;DNN Accelerator;Softmax Activation;Digital Design},
+  doi={10.1109/I4C57141.2022.10057747}}
+
+@ARTICLE{segnet,
+  author={Badrinarayanan, Vijay and Kendall, Alex and Cipolla, Roberto},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation}, 
+  year={2017},
+  volume={39},
+  number={12},
+  pages={2481-2495},
+  keywords={Decoding;Neural networks;Training;Computer architecture;Image segmentation;Semantics;Convolutional codes;Deep convolutional neural networks;semantic pixel-wise segmentation;indoor scenes;road scenes;encoder;decoder;pooling;upsampling},
+  doi={10.1109/TPAMI.2016.2644615}
+}
+
+@InProceedings{iou,
+author="Bokhovkin, Alexey
+and Burnaev, Evgeny",
+editor="Lu, Huchuan
+and Tang, Huajin
+and Wang, Zhanshan",
+title="Boundary Loss for Remote Sensing Imagery Semantic Segmentation",
+booktitle="Advances in Neural Networks -- ISNN 2019",
+year="2019",
+publisher="Springer International Publishing",
+address="Cham",
+pages="388--401",
+abstract="In response to the growing importance of geospatial data, its analysis including semantic segmentation becomes an increasingly popular task in computer vision today. Convolutional neural networks are powerful visual models that yield hierarchies of features and practitioners widely use them to process remote sensing data. When performing remote sensing image segmentation, multiple instances of one class with precisely defined boundaries are often the case, and it is crucial to extract those boundaries accurately. The accuracy of segments boundaries delineation influences the quality of the whole segmented areas explicitly. However, widely-used segmentation loss functions such as BCE, IoU loss or Dice loss do not penalize misalignment of boundaries sufficiently. In this paper, we propose a novel loss function, namely a differentiable surrogate of a metric accounting accuracy of boundary detection. We can use the loss function with any neural network for binary segmentation. We performed validation of our loss function with various modifications of UNet on a synthetic dataset, as well as using real-world data (ISPRS Potsdam, INRIA AIL). Trained with the proposed loss function, models outperform baseline methods in terms of IoU score.",
+isbn="978-3-030-22808-8"
+}
+
+
+
+@InProceedings{modifiedunet,
+author="Kale, Shashikant Rangnathrao
+and Kadam, Chandrakant Madhukar
+and Holambe, Raghunath Sambhaji
+and Chile, Rajan Hari",
+editor="Manoharan, S.
+and Tugui, Alexandru
+and Baig, Zubair",
+title="Land Cover Classification Using Modified U-net: A Robust Approach for Satellite Image Analysis",
+booktitle="Proceedings of 4th International Conference on Artificial Intelligence and Smart Energy",
+year="2024",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="135--146",
+abstract="Accurate identification of land use and land cover (LULC) is crucial for effective resource management and various geospatial applications. In this research paper, a deep learning-based approach for semantic segmentation of satellite images is proposed to classify LULC. The power of transfer learning algorithms, specifically U-net is leveraged, combined with satellite data to achieve high accuracy in image segmentation. The method utilizes a False Color Composite (FCC) image derived from satellite imagery with a spatial resolution of 10m. Previously classified image is employed as training data in patch format. By modifying the U-net architecture to suit our requirements and employing ensemble classification, we achieve impressive training accuracy of 93.77{\%} and validation accuracy of 93.60{\%}. These results show the model's precise training, overcoming underfitting or overfitting despite low-resolution satellite images. This approach highlights deep learning and transfer learning's effectiveness in satellite image classification, particularly for LULC identification.",
+isbn="978-3-031-61475-0"
+}
+
+
+@Article{hyperparaunet,
+AUTHOR = {Lee, Yongkyu and Sim, Woodam and Park, Jeongmook and Lee, Jungsoo},
+TITLE = {Evaluation of Hyperparameter Combinations of the U-Net Model for Land Cover Classification},
+JOURNAL = {Forests},
+VOLUME = {13},
+YEAR = {2022},
+NUMBER = {11},
+ARTICLE-NUMBER = {1813},
+URL = {https://www.mdpi.com/1999-4907/13/11/1813},
+ISSN = {1999-4907},
+ABSTRACT = {The aim of this study was to select the optimal deep learning model for land cover classification through hyperparameter adjustment. A U-Net model with encoder and decoder structures was used as the deep learning model, and RapidEye satellite images and a sub-divided land cover map provided by the Ministry of Environment were used as the training dataset and label images, respectively. According to different combinations of hyperparameters, including the size of the input image, the configuration of convolutional layers, the kernel size, and the number of pooling and up-convolutional layers, 90 deep learning models were built, and the model performance was evaluated through the training accuracy and loss, as well as the validation accuracy and loss values. The evaluation results showed that the accuracy was higher with a smaller image size and a smaller kernel size, and was more dependent on the convolutional layer configuration and number of layers than the kernel size. The loss tended to be lower as the convolutional layer composition and number of layers increased, regardless of the image size or kernel size. The deep learning model with the best performance recorded a validation loss of 0.11 with an image size of 64 × 64, a convolutional layer configuration of C→C→C→P, a kernel size of 5 × 5, and five layers. Regarding the classification accuracy of the land cover map constructed using this model, the overall accuracy and kappa coefficient for three study cities showed high agreement at approximately 82.9% and 66.3%, respectively.},
+DOI = {10.3390/f13111813}
+}
+
+
+@Article{transferlearning,
+AUTHOR = {Fayaz, Muhammad and Nam, Junyoung and Dang, L. Minh and Song, Hyoung-Kyu and Moon, Hyeonjoon},
+TITLE = {Land-Cover Classification Using Deep Learning with High-Resolution Remote-Sensing Imagery},
+JOURNAL = {Applied Sciences},
+VOLUME = {14},
+YEAR = {2024},
+NUMBER = {5},
+ARTICLE-NUMBER = {1844},
+URL = {https://www.mdpi.com/2076-3417/14/5/1844},
+ISSN = {2076-3417},
+ABSTRACT = {Land-area classification (LAC) research offers a promising avenue to address the intricacies of urban planning, agricultural zoning, and environmental monitoring, with a specific focus on urban areas and their complex land usage patterns. The potential of LAC research is significantly propelled by advancements in high-resolution satellite imagery and machine learning strategies, particularly the use of convolutional neural networks (CNNs). Accurate LAC is paramount for informed urban development and effective land management. Traditional remote-sensing methods encounter limitations in precisely classifying dynamic and complex urban land areas. Therefore, in this study, we investigated the application of transfer learning with Inception-v3 and DenseNet121 architectures to establish a reliable LAC system for identifying urban land use classes. Leveraging transfer learning with these models provided distinct advantages, as it allows the LAC system to benefit from pre-trained features on large datasets, enhancing model generalization and performance compared to starting from scratch. Transfer learning also facilitates the effective utilization of limited labeled data for fine-tuning, making it a valuable strategy for optimizing model accuracy in complex urban land classification tasks. Moreover, we strategically employ fine-tuned versions of Inception-v3 and DenseNet121 networks, emphasizing the transformative impact of these architectures. The fine-tuning process enables the model to leverage pre-existing knowledge from extensive datasets, enhancing its adaptability to the intricacies of LC classification. By aligning with these advanced techniques, our research not only contributes to the evolution of remote-sensing methodologies but also underscores the paramount importance of incorporating cutting-edge methodologies, such as fine-tuning and the use of specific network architectures, in the continual enhancement of LC classification systems. Through experiments conducted on the UC-Merced_LandUse dataset, we demonstrate the effectiveness of our approach, achieving remarkable results, including 92% accuracy, 93% recall, 92% precision, and a 92% F1-score. Moreover, employing heatmap analysis further elucidates the decision-making process of the models, providing insights into the classification mechanism. The successful application of CNNs in LAC, coupled with heatmap analysis, opens promising avenues for enhanced urban planning, agricultural zoning, and environmental monitoring through more accurate and automated land-area classification.},
+DOI = {10.3390/app14051844}
+}
+
+
+@Article{sentinel,
+AUTHOR = {Solórzano, Jonathan V. and Mas, Jean François and Gao, Yan and Gallardo-Cruz, José Alberto},
+TITLE = {Land Use Land Cover Classification with U-Net: Advantages of Combining Sentinel-1 and Sentinel-2 Imagery},
+JOURNAL = {Remote Sensing},
+VOLUME = {13},
+YEAR = {2021},
+NUMBER = {18},
+ARTICLE-NUMBER = {3600},
+URL = {https://www.mdpi.com/2072-4292/13/18/3600},
+ISSN = {2072-4292},
+ABSTRACT = {The U-net is nowadays among the most popular deep learning algorithms for land use/land cover (LULC) mapping; nevertheless, it has rarely been used with synthetic aperture radar (SAR) and multispectral (MS) imagery. On the other hand, the discrimination between plantations and forests in LULC maps has been emphasized, especially for tropical areas, due to their differences in biodiversity and ecosystem services provision. In this study, we trained a U-net using different imagery inputs from Sentinel-1 and Sentinel-2 satellites, MS, SAR and a combination of both (MS + SAR); while a random forests algorithm (RF) with the MS + SAR input was also trained to evaluate the difference in algorithm selection. The classification system included ten classes, including old-growth and secondary forests, as well as old-growth and young plantations. The most accurate results were obtained with the MS + SAR U-net, where the highest overall accuracy (0.76) and average F1-score (0.58) were achieved. Although MS + SAR and MS U-nets gave similar results for almost all of the classes, for old-growth plantations and secondary forest, the addition of the SAR band caused an F1-score increment of 0.08–0.11 (0.62 vs. 0.54 and 0.45 vs. 0.34, respectively). Consecutively, in comparison with the MS + SAR RF, the MS + SAR U-net obtained higher F1-scores for almost all the classes. Our results show that using the U-net with a combined input of SAR and MS images enabled a higher F1-score and accuracy for a detailed LULC map, in comparison with other evaluated methods.},
+DOI = {10.3390/rs13183600}
+}
+
+@article{uav,
+author = {Osco, Lucas and Junior, José and Ramos, Ana Paula and Jorge, Lucio and Fatholahi, Sarah Narges and Silva, Jonathan and Matsubara, Edson and Pistori, Hemerson and Gonçalves, Wesley and Li, Jonathan},
+year = {2021},
+month = {07},
+pages = {102456},
+title = {A Review on Deep Learning in UAV Remote Sensing},
+volume = {102},
+journal = {International Journal of Applied Earth Observation and Geoinformation},
+doi = {10.1016/j.jag.2021.102456}
+}
+
+@article{multiattent,
+   title={Multiattention Network for Semantic Segmentation of Fine-Resolution Remote Sensing Images},
+   volume={60},
+   ISSN={1558-0644},
+   url={http://dx.doi.org/10.1109/TGRS.2021.3093977},
+   DOI={10.1109/tgrs.2021.3093977},
+   journal={IEEE Transactions on Geoscience and Remote Sensing},
+   publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+   author={Li, Rui and Zheng, Shunyi and Zhang, Ce and Duan, Chenxi and Su, Jianlin and Wang, Libo and Atkinson, Peter M.},
+   year={2022},
+   pages={1–13} 
+}
+
+@article{resnetbackbone,
+author = {Wang, Libo and LI, RUI and Duan, Chenxi and Zhang, Ce and Meng, Xiaoliang and Fang, Shenghui},
+year = {2022},
+month = {01},
+pages = {1-1},
+title = {A Novel Transformer Based Semantic Segmentation Scheme for Fine-Resolution Remote Sensing Images},
+volume = {PP},
+journal = {IEEE Geoscience and Remote Sensing Letters},
+doi = {10.1109/LGRS.2022.3143368}
+}
+
+@article{aiedge,
+author = {Furano, Gianluca and Meoni, Gabriele and Dunne, Aubrey and Moloney, David and Ferlet-Cavrois, Veronique and Tavoularis, Antonis and Byrne, Jonathan and Buckley, Léonie and Psarakis, Mihalis and Voss, Kay-Obbe and Fanucci, Luca},
+year = {2020},
+month = {12},
+pages = {},
+title = {Towards the Use of Artificial Intelligence on the Edge in Space Systems: Challenges and Opportunities},
+volume = {35},
+journal = {IEEE Aerospace and Electronic Systems Magazine},
+doi = {10.1109/MAES.2020.3008468}
+}
+
+@misc{cnn,
+      title={A Survey of Convolutional Neural Networks: Analysis, Applications, and Prospects}, 
+      author={Zewen Li and Wenjie Yang and Shouheng Peng and Fan Liu},
+      year={2020},
+      eprint={2004.02806},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2004.02806}, 
+}
+
+@misc{encoderdecoder,
+      title={Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation}, 
+      author={Liang-Chieh Chen and Yukun Zhu and George Papandreou and Florian Schroff and Hartwig Adam},
+      year={2018},
+      eprint={1802.02611},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1802.02611}, 
+}
+
+@misc{multiscale,
+      title={Searching for Efficient Multi-Scale Architectures for Dense Image Prediction}, 
+      author={Liang-Chieh Chen and Maxwell D. Collins and Yukun Zhu and George Papandreou and Barret Zoph and Florian Schroff and Hartwig Adam and Jonathon Shlens},
+      year={2018},
+      eprint={1809.04184},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1809.04184}, 
+}
+
+@misc{torchgeo,
+      title={TorchGeo: Deep Learning With Geospatial Data}, 
+      author={Adam J. Stewart and Caleb Robinson and Isaac A. Corley and Anthony Ortiz and Juan M. Lavista Ferres and Arindam Banerjee},
+      year={2022},
+      eprint={2111.08872},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2111.08872}, 
+}
+
+@misc{exception,
+      title={Xception: Deep Learning with Depthwise Separable Convolutions}, 
+      author={François Chollet},
+      year={2017},
+      eprint={1610.02357},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1610.02357}, 
+}
+
+@misc{pooling,
+      title={Deformable Convolutional Networks}, 
+      author={Jifeng Dai and Haozhi Qi and Yuwen Xiong and Yi Li and Guodong Zhang and Han Hu and Yichen Wei},
+      year={2017},
+      eprint={1703.06211},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/1703.06211}, 
+}
+
+@INPROCEEDINGS{sirfuzzy,
+  author={Pandey, Pratibha and Dewangan, Kranti Kumar and Dewangan, Deepak Kumar},
+  booktitle={2017 International Conference on Energy, Communication, Data Analytics and Soft Computing (ICECDS)}, 
+  title={Enhancing the quality of satellite images using fuzzy inference system}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={3087-3092},
+  keywords={Satellites;Image edge detection;Fuzzy logic;Laplace equations;Transforms;Data analysis;Image enhancement;Preprocessing;Satellite images;Contrast setting;Fuzzyfication;PSNR},
+  doi={10.1109/ICECDS.2017.8390024}
+}
+
+@misc{sircosting,
+  author={Deepak Kumar Dewangan and Yogesh Rathore}, 
+  title={Image quality costing of compressed image using full reference method. International Journal of Technology}, 
+  year={2011},
+  volume={},
+  number={},
+  keywords={},
+  doi={}
+}
+
+@misc{sirestimation,
+  author={Deepak Kumar Dewangan and Yogesh Rathore}, 
+  title={Image Quality estimation of Images using Full Reference and No Reference Method}, 
+  year={2011},
+  volume={},
+  number={},
+  keywords={Full Reference, No Reference, Quality Assessment},
+  doi={}
+}
+
+
+
+@article{dubai,
+author = {Samy Ismail Elmahdy and Mohamed Mostafa Mohamed},
+title = {Monitoring and analysing the Emirate of Dubai’s land use/land cover changes: an integrated, low-cost remote sensing approach},
+journal = {International Journal of Digital Earth},
+volume = {11},
+number = {11},
+pages = {1132--1150},
+year = {2018},
+publisher = {Taylor \& Francis},
+doi = {10.1080/17538947.2017.1379563},
+
+
+
+
+
