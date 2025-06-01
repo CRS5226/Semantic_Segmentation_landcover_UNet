@@ -30,3 +30,34 @@ You can run the provided Jupyter Notebook on **Google Colab** or **Kaggle** for 
 4. Run all cells to train and evaluate the model.
 
 ## Project Structure
+
+```
+Semantic_Segmentation_landcover_UNet/
+│
+├── README.md
+├── unet-resnet-landcoverai.ipynb
+├── latex/
+│   ├── paper_code
+│   ├── bib_file
+│   └── Towards U-Net based Semantic Segmentation for Satellite images.pdf
+├── icons8-google-scholar.svg
+└── Towards U-Net based Semantic Segmentation for Satellite images.pdf
+```
+
+## Research Paper
+
+This project is based on the following peer-reviewed publication:
+
+- [Towards U-Net based Semantic Segmentation for Satellite images (IEEE Xplore)](https://ieeexplore.ieee.org/document/10896139)
+
+The paper provides detailed methodology, experiments, and results. Please cite it if you use this work in your research.
+
+## Useful Links
+
+- [LandCover.ai Dataset](https://landcover.ai.linuxpolska.com/)
+- [Kaggle Notebook (source code)](https://www.kaggle.com/code/chitrakshsingh/unet-landcoverai/notebook)
+- [Project Paper (IEEE Xplore)](https://ieeexplore.ieee.org/document/10896139)
+
+---
+
+**For questions or contributions, feel free to open an issue or pull request.**
